@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonder.hotel.dao.UserMapper">
+
+	<resultMap type="User" id="userList">
+	 <id property="id" column="u_id" />
+ 
+        <!-- 定义普通属性 -->
+        <result property="userName" column="u_userName" />
+        <result property="password" column="U_userPassword" />
+        <result property="typeId" column="u_typeId" />
+	</resultMap>
+    <select id="getUserList" resultMap="userList">
+    SELECT * FROM user
+</select>
+
+	<select id="getUserByName" resultMap="userList" parameterType="string">
+	SELECT * FROM user where u_userName=#{userName}
+	</select>
+</mapper>

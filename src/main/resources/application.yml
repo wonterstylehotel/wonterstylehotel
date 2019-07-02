@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  context-path: /hotelsys
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://localhost:3306/hotelsys?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    max-active: 20
+    max-idle: 8
+    max-maxWait: 100
+    min-idle: 8
+    initial-size: 10
+    
+mybatis:
+  mapper-locations: classpath:com.wonder.hotel.dao/*.xml
+  type-aliases-package: com.wonder.hotel.entity
+logging:
+  level:
+    com.wonder.hotel.dao.*: debug
+    
+tymeleaf:
+  model: HTML5
+  encoding: UTF-8
+  prefix: classpath:/templates/
+  suffix: .html
+  content-type: text/html
+  cache: false
