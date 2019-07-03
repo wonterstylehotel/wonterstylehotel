@@ -11,10 +11,12 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println("LoginHandlerInterceptor");
 		Object user=request.getSession().getAttribute("loginUser");
 		if (user==null) {
 			request.setAttribute("msg", "您没有权限请先登陆");
-			request.getRequestDispatcher("/404.html");
+			//response.sendRedirect("/404.html");
+			request.getRequestDispatcher("/404.html").forward(request, response);
 			return false;
 		}else {
 			return true;

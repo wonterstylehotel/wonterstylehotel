@@ -16,8 +16,6 @@ public class SpringMvcConig {
 		WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
 			@Override
 			public void addViewControllers(ViewControllerRegistry registry) {
-				registry.addViewController("/").setViewName("login");
-				registry.addViewController("/index.html").setViewName("login");
 				registry.addViewController("/main.html").setViewName("dashboard");
 			}
 
@@ -28,7 +26,8 @@ public class SpringMvcConig {
 				// 静态资源； *.css , *.js
 				// SpringBoot已经做好了静态资源映射
 				registry.addInterceptor(new LoginHandlerInterceptor())
-				.addPathPatterns("/sys").excludePathPatterns("/","/user/login");
+				.addPathPatterns("/sys/*","/greenn/main").excludePathPatterns("/","/greenn/login");
+			
 			}
 		};
 		return adapter;
